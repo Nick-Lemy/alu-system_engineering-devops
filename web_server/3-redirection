@@ -1,2 +1,14 @@
 #!/usr/bin/env bash
 
+#!/usr/bin/env bash
+# This script configures Nginx to redirect /redirect_me to a YouTube video with a 301 status code.
+# script that install nginx and configure it to redirect to another page when
+# accessing the /redirect_me page.
+sudo apt update -y
+sudo apt install nginx -y
+
+sudo mkdir /etc/nginx/html
+sudo touch /etc/nginx/html/index.html
+# store configuration content
+sudo sed -i '24i\       rewrite ^/redirect_me https://anime-sama.fr permanent;' /etc/nginx/sites-available/default
+sudo service nginx restart
