@@ -1,22 +1,37 @@
 #!/usr/bin/env bash
-# Transfers a file from our client to a server
+# Configures a new ubuntu machine by installing
+# Nginx where it should be listening on port 80
+# Serve a page that would return a Hello World string
+#
+# colors
+blue='\e[1;34m'
+brown='\e[0;33m'
+green='\e[1;32m'
+reset='\033[0m'
 
-sudo apt-get update
+echo -e "${blue}Updating and installing ${brown}Nginx${blue}.${reset}\n"
+sudo apt-get update -y -qq && \
+	 sudo apt-get install nginx -y
 
-sudo apt install nginx -y
+echo -e "\n${blue}Setting up some minor stuff.${reset}\n"
 
-sudo systemctl start nginx.service
+# starting nginx service
+sudo service nginx start
 
+# allowing nginx on firewall
 sudo ufw allow 'Nginx HTTP'
 
-sudo chown -R $USER:$USER /var/www/html
+# Give the user ownership to website files for easy editing
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
 
-sudo chmod -R 755 /var/www/html
-
+# Backup default index
 cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
 
-echo -e "Holberton School for the win!" | dd status=none of=/var/www/html/index.nginx-debian.html
+# Creating new index
+echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
 
-sudo systemctl restart nginx.service
+# Restarting nginx
+sudo service nginx restart
 
-echo "Holberton School for the win!"
+echo -e "\n${green}Completed.${reset} ✅\n"
