@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-#!/usr/bin/env bash
 # This script configures Nginx to redirect /redirect_me to a YouTube video with a 301 status code.
 # script that install nginx and configure it to redirect to another page when
 # accessing the /redirect_me page.
