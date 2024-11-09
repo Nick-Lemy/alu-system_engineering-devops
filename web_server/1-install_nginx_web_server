@@ -15,6 +15,6 @@ sudo chmod -R 755 /var/www/html
 
 cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
 
-echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+echo -e "Holberton School" | dd status=none of=/var/www/html/index.nginx-debian.html
 
 sudo systemctl restart nginx.service
