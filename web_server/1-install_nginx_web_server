@@ -5,4 +5,4 @@ sudo apt-get update -y
 sudo apt-get install nginx -y 
 sudo ufw allow 'Nginx HTTP'
 sh -c 'echo "Holberton School" > /var/www/html/index.html'
-service nginx restart
+sudo systemctl start nginx.service
