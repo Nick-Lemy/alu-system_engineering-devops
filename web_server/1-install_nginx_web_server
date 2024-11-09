@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Transfers a file from our client to a server
+
+sudo apt-get update
+
+sudo apt install nginx -y
+
+sudo systemctl start nginx.service
+
+sudo ufw allow 'Nginx HTTP'
+
+sudo chown -R $USER:$USER /var/www/html
+
+sudo chmod -R 755 /var/www/html
+
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+
+sudo systemctl restart nginx.service
