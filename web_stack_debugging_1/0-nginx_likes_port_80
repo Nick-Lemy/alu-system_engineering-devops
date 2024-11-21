@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+# Install nginx
 docker pull nginx
 docker run -d --name server -p 80:80 nginx
