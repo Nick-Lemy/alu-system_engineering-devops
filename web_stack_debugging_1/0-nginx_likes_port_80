@@ -2,6 +2,6 @@
 # Install nginx
 
 apt-get update
-apt-get install -y nginx
+apt install -y nginx
 service nginx enable
 service nginx start 
