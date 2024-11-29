@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# I am someone else
-
-sudo whoami
+# hahaha
+USER=$1
+sudo -u "$USER" whoami
